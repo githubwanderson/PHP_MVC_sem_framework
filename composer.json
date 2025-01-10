@@ -1,0 +1,16 @@
+{
+    "name": "wanderson.martins_ma/php_mvc_sem_framework",
+    "description": "MVC",
+    "autoload": {
+        "psr-4": {
+            "app\\":"app"
+        }
+    },
+    "authors": [
+        {
+            "name": "Wanderson",
+            "email": "emailwandersonalves@gmail.com"
+        }
+    ],
+    "require": {}
+}
