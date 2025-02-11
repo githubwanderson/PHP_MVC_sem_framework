@@ -4,7 +4,10 @@
     "autoload": {
         "psr-4": {
             "app\\":"app"
-        }
+        },
+        "files": [
+            "app/helpers/exception.php"
+        ]
     },
     "authors": [
         {
