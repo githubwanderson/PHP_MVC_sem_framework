@@ -6,6 +6,7 @@ class AppExtract
 {
     public array $uri = [];
     private string $controller = 'Home';
+    private string $method = 'index';
 
     public function controller()
     {
@@ -29,6 +30,16 @@ class AppExtract
 
     public function method()
     {
+        $method = '';        
+        if(!empty($this->uri[2])){
+            $method = strtolower($this->uri[2]);
+        }
+
+        if(!empty($method) && method_exists($this->controller, $method)){
+            $this->method = $method;
+        }
+
+        return $this->method;
     }
 
     public function params()
