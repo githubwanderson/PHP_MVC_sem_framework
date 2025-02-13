@@ -7,14 +7,16 @@ class AppExtract
     public array $uri = [];
     private string $controller = 'Home';
     private string $method = 'index';
+    private array $params = [];
+    private int $sliceIndexStartFrom = 2;
 
-    public function controller()
+    public function controller() :string
     {
         $controller = '';
-        $this->uri = explode('/', $_SERVER['REQUEST_URI']);
+        $this->uri = explode('/', ltrim($_SERVER['REQUEST_URI'], '/'));
                 
-        if(!empty($this->uri[1])){
-            $controller = ucfirst($this->uri[1]);
+        if(!empty($this->uri[0])){
+            $controller = ucfirst($this->uri[0]);
         }
 
         $namespaceAndController = "app\\controllers\\{$controller}";
@@ -28,21 +30,27 @@ class AppExtract
         return $this->controller;
     }
 
-    public function method()
+    public function method() :string
     {
         $method = '';        
-        if(!empty($this->uri[2])){
-            $method = strtolower($this->uri[2]);
+        if(!empty($this->uri[1])){
+            $method = strtolower($this->uri[1]);
         }
 
         if(!empty($method) && method_exists($this->controller, $method)){
-            $this->method = $method;
+            return $this->method = $method;
         }
 
+        $this->sliceIndexStartFrom = 1;
         return $this->method;
     }
 
-    public function params()
+    public function params() :array
     {
+        $countUri = count($this->uri);
+
+        $this->params = array_slice($this->uri,$this->sliceIndexStartFrom,$countUri);
+
+        return $this->params;
     }
 }
