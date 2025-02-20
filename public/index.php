@@ -6,20 +6,30 @@ session_start();
 
 require '../vendor/autoload.php';
 
-$app = new AppExtract;
+try {
 
-$controller = $app->controller();
-$method = $app->method();
-$params = $app->params();
+    $app = new AppExtract;
 
-$controller = new $controller;
-$controller->$method($params);
+    $controller = $app->controller();
+    $method = $app->method();
+    $params = $app->params();
 
-if($_SERVER['REQUEST_METHOD'] === 'GET'){
-    extract($controller->data);
-    require '../app/views/index.php';
+    $controller = new $controller;
+    $controller->$method($params);
+
+    if($_SERVER['REQUEST_METHOD'] === 'GET'){
+
+        if(empty($controller->data)){
+            throw new Exception('A propriedade $data é obrigatório');
+        }
+
+        if(!array_key_exists('title', $controller->data)){
+            throw new Exception('A propriedade title é obrigatória');
+        }
+
+        extract($controller->data);
+        require '../app/views/index.php';
+    }
+} catch (Throwable $th) {
+    formatException($th);
 }
-
-// var_dump($controller);
-// var_dump($method);
-// var_dump($params);
