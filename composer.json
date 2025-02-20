@@ -16,5 +16,7 @@
             "email": "emailwandersonalves@gmail.com"
         }
     ],
-    "require": {}
+    "require": {
+        "filp/whoops": "^2.17"
+    }
 }
