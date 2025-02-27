@@ -18,7 +18,7 @@ class MyApp
     public function controller()
     {
         $controller = $this->controllerInterface->controller();
-        $method     = $this->controllerInterface->method();
+        $method     = $this->controllerInterface->method($controller);
         $params     = $this->controllerInterface->params();
         
         $this->controller = new $controller;
