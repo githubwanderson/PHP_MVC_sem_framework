@@ -15,7 +15,7 @@ class AppExtract implements ControllerInterface
     public function controller() :string
     {
         $controller = '';
-        $this->uri = explode('/', ltrim($_SERVER['REQUEST_URI'], '/'));
+        $this->uri = Uri::uri();
                 
         if(!empty($this->uri[0])){
             $controller = ucfirst($this->uri[0]);
