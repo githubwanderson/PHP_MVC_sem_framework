@@ -3,6 +3,7 @@
 namespace app\core;
 
 use app\interfaces\ControllerInterface;
+use app\core\ControllerExtract;
 
 class AppExtract implements ControllerInterface
 {
@@ -13,23 +14,8 @@ class AppExtract implements ControllerInterface
     private int $sliceIndexStartFrom = 2;
 
     public function controller() :string
-    {
-        $controller = '';
-        $this->uri = Uri::uri();
-                
-        if(!empty($this->uri[0])){
-            $controller = ucfirst($this->uri[0]);
-        }
-
-        $namespaceAndController = "app\\controllers\\{$controller}";
-
-        if(class_exists($namespaceAndController)){
-            $this->controller = $namespaceAndController;
-        } else {
-            $this->controller = "app\\controllers\\{$this->controller}";
-        }
-
-        return $this->controller;
+    {   
+        return ControllerExtract::extract();
     }
 
     public function method() :string
