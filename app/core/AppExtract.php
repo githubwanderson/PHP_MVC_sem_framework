@@ -9,7 +9,6 @@ use app\core\MethodExtract;
 class AppExtract implements ControllerInterface
 {
     public array $uri = [];
-    private array $params = [];
     private $sliceIndexStartFrom = 2;
 
     public function controller() :string
@@ -27,10 +26,6 @@ class AppExtract implements ControllerInterface
 
     public function params() :array
     {
-        $countUri = count($this->uri);
-
-        $this->params = array_slice($this->uri,$this->sliceIndexStartFrom,$countUri);
-
-        return $this->params;
+        return ParamExtract::extract($this->sliceIndexStartFrom);
     }
 }
