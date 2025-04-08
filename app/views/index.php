@@ -8,9 +8,8 @@
     
     <title><?php echo $title ?></title>
 </head>
-<body>    
+<body>
     <div class="container">
-        <h2>MVC sem framework</h2>
         <?php require VIEW_PATH . $this->controller->view; ?>
     </div>
 </body>

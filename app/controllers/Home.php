@@ -11,12 +11,9 @@ class Home
     
     public function index()
     {
-        $users = (new User)->findAll();
-
         $this->view = 'home.php';
         $this->data = [
-            'title' => 'Home',
-            'users' => $users
+            'title' => 'Home'
         ];
     }
 
