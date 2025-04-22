@@ -2,6 +2,6 @@
 
 <ul>
     <?php foreach ($users as $user) { ?>        
-        <li><?php echo "$user->firstName $user->lastName" ?> | <a href=<?php echo "/user/show/{$user->id}"?> <?php echo $user->id ?>>Ver dados</a></li> 
+        <li><?php echo "$user->firstName $user->lastName" ?> | <a href=<?php echo "/user/edit/{$user->id}"?> <?php echo $user->id ?>>Ver dados</a></li> 
     <?php } ?> 
 </ul>

@@ -4,3 +4,19 @@ html,
 body{
     font-family: 'Barlow', sans-serif;
 }
+
+ul#nav{
+    padding: 0;
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+}
+
+ul#nav li{
+    margin-right: 10px;
+}
+
+#header {
+   display: flex;
+   justify-content: space-between;
+}
