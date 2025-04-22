@@ -2,11 +2,11 @@
 
 namespace app\core;
 
-use app\interfaces\ControllerInterface;
+use app\interfaces\AppInterface;
 use app\core\ControllerExtract;
 use app\core\MethodExtract;
 
-class AppExtract implements ControllerInterface
+class AppExtract implements AppInterface
 {
     public array $uri = [];
     private $sliceIndexStartFrom = 2;

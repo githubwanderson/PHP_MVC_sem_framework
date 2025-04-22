@@ -2,7 +2,7 @@
 
 namespace app\interfaces;
 
-interface ControllerInterface
+interface AppInterface
 {
     public function controller();
     public function method($controller);

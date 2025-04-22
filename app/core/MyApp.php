@@ -2,24 +2,24 @@
 
 namespace app\core;
 
-use app\interfaces\ControllerInterface;
+use app\interfaces\AppInterface;
 use Exception;
 
 class MyApp 
 {
-    private $controllerInterface;
+    private $appInterface;
     private $controller;
 
-    public function __construct(ControllerInterface $controllerInterface)
+    public function __construct(AppInterface $appInterface)
     {
-        $this->controllerInterface = $controllerInterface;
+        $this->appInterface = $appInterface;
     }
 
     public function controller()
     {
-        $controller = $this->controllerInterface->controller();
-        $method     = $this->controllerInterface->method($controller);
-        $params     = $this->controllerInterface->params();
+        $controller = $this->appInterface->controller();
+        $method     = $this->appInterface->method($controller);
+        $params     = $this->appInterface->params();
         
         $this->controller = new $controller;
         $this->controller->$method($params);        
